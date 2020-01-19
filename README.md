@@ -1,5 +1,58 @@
 # Events for Silverstripe CMS
 
+This module allows developers to register event handlers for common CMS actions using the
+[`silverstripe/event-dispatcher`](https://github.com/silverstripe/silverstripe-event-dispatcher) API.
+
+## Available events
+
+#### formSubmitted
+* **Description**: Any form submitted in the CMS
+* **Example**:  save, publish, unpublish, delete
+* **Listener**: `SilverStripe\CMSEvents\Listener\Form\Listener`
+
+#### cmsAction
+* **Description**: A `CMSMain` controller action
+* **Example**:  `savetreenode` (reorder site tree)
+* **Listener**: `SilverStripe\CMSEvents\Listener\CMSMain\Listener`
+
+#### gridFieldAction
+* **Description**: A standard GridField action invoked via a URL (`GridField_URLHandler`)
+* **Example**:  `handleReorder` (reorder items)
+* **Listener**: `SilverStripe\CMSEvents\Listener\GridField\Action\Listener`
+
+#### gridFieldAlteration
+* **Description**: A GridField action invoked via a URL (`GridField_ActionProvider`)
+* **Example**:  `deleterecord`, `archiverecord`
+* **Listener**: `SilverStripe\CMSEvents\Listener\GridField\Alteration\Listener`
+
+#### graphqlMutation
+* **Description**: A scaffolded GraphQL mutation
+* **Example**:  `mutation createMyDataObject(Input: $Input)`
+* **Listener**: `SilverStripe\CMSEvents\Listener\GraphQL\Mutation\Listener`
+
+#### graphqlOperation
+* **Description**: Any generic GraphQL operation
+* **Example**:  `mutation publishAllFiles`, `query allTheThings`
+* **Listener**: `SilverStripe\CMSEvents\Listener\GraphQL\Middleware\Listener`
+
+
+## Registering an event handler
+
+```yaml
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\EventDispatcher\Dispatch\Dispatcher:
+    properties:
+      handlers:
+        # arbitrary key
+        cmsForms:
+          on: [ formSubmitted.save ]
+          handler: %$MyProject\MySaveHandler
+```
+
+For more information on using the event dispatcher, read the [event dispatcher documentation](
+https://github.com/silverstripe/silverstripe-event-dispatcher
+)
+
 
 ## Requirements
 
