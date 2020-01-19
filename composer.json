@@ -1,0 +1,36 @@
+{
+    "name": "silverstripe/cms-events",
+    "description": "Triggers events for common actions in Silverstripe CMS",
+    "type": "silverstripe-vendormodule",
+    "keywords": [
+        "silverstripe",
+        "CMS",
+        "events"
+    ],
+    "license": "BSD-3-Clause",
+    "require": {
+        "silverstripe/framework": "4.x-dev",
+        "silverstripe/event-dispatcher": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "squizlabs/php_codesniffer": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SilverStripe\\CMSEvents\\": "src/",
+            "SilverStripe\\CMSEvents\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "scripts": {
+        "lint": "vendor/bin/phpcs src/ tests/",
+        "lint-clean": "vendor/bin/phpcbf src/ tests/"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
