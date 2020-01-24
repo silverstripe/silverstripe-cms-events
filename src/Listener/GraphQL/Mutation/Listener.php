@@ -26,7 +26,7 @@ if (!class_exists(MutationScaffolder::class)) {
  */
 class Listener extends Extension
 {
-
+    const EVENT_NAME = 'graphqlMutation';
     const TYPE_CREATE = 'create';
     const TYPE_DELETE = 'delete';
     const TYPE_UPDATE = 'update';
@@ -45,7 +45,7 @@ class Listener extends Extension
     public function afterMutation($recordOrList, array $args, $context, ResolveInfo $info): void
     {
         Dispatcher::singleton()->trigger(
-            'graphqlMutation',
+            self::EVENT_NAME,
             Event::create(
                 $this->getActionFromScaffolder($this->owner),
                 [

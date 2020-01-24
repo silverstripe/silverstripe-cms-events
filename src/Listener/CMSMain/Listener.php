@@ -21,6 +21,8 @@ if (!class_exists(CMSMain::class)) {
  */
 class Listener extends Extension
 {
+    const EVENT_NAME = 'cmsAction';
+
     /**
      * Extension point in @see CMSMain::handleAction
      *
@@ -31,7 +33,7 @@ class Listener extends Extension
     public function afterCallActionHandler(HTTPRequest $request, $action, $result): void
     {
         Dispatcher::singleton()->trigger(
-            'cmsAction',
+            self::EVENT_NAME,
             Event::create(
                 $action,
                 [

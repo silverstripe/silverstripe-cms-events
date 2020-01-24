@@ -19,6 +19,7 @@ use SilverStripe\Forms\GridField\GridField;
  */
 class Listener extends Extension
 {
+    const EVENT_NAME = 'gridFieldAlteration';
 
     /**
      * Extension point in @see GridField::handleAction
@@ -44,7 +45,7 @@ class Listener extends Extension
             return;
         }
         Dispatcher::singleton()->trigger(
-            'gridFieldAlteration',
+            self::EVENT_NAME,
             Event::create(
                 $actionName,
                 [

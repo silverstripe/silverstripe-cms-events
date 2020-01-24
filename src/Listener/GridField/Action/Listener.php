@@ -17,6 +17,7 @@ use SilverStripe\Forms\GridField\GridField;
  */
 class Listener extends Extension
 {
+    const EVENT_NAME = 'gridFieldAction';
 
     /**
      * Extension point in @see GridField::handleRequest
@@ -30,7 +31,7 @@ class Listener extends Extension
     public function afterCallActionURLHandler(HTTPRequest $request, $action, $result): void
     {
         Dispatcher::singleton()->trigger(
-            'gridFieldAction',
+            self::EVENT_NAME,
             Event::create(
                 $action,
                 [

@@ -25,6 +25,8 @@ if (!class_exists(Manager::class)) {
  */
 class Listener extends Extension
 {
+    const EVENT_NAME = 'graphqlOperation';
+
     /**
      * Extension point in @see Manager::callMiddleware
      * Graph QL custom action
@@ -38,7 +40,7 @@ class Listener extends Extension
     public function onAfterCallMiddleware(Schema $schema, string $query, array $context, $params): void
     {
         Dispatcher::singleton()->trigger(
-            'graphqlOperation',
+            self::EVENT_NAME,
             Event::create(
                 $this->getActionFromQuery($query),
                 [
