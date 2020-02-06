@@ -9,7 +9,8 @@
     ],
     "license": "BSD-3-Clause",
     "require": {
-        "silverstripe/cms": "4.5.x-dev",
+        "silverstripe/cms": "^4.5",
+        "silverstripe/framework": "^4.5.1",
         "silverstripe/event-dispatcher": "*"
     },
     "require-dev": {
@@ -30,6 +31,9 @@
     "scripts": {
         "lint": "vendor/bin/phpcs src/ tests/",
         "lint-clean": "vendor/bin/phpcbf src/ tests/"
+    },
+    "conflict": {
+        "silverstripe/graphql": "< 3.2.1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
