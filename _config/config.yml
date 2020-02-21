@@ -11,7 +11,7 @@ Name: event-dispatcher-listeners-form
 Only:
   moduleexists: silverstripe/admin
 ---
-SilverStripe\Admin\LeftAndMainFormRequestHandler:
+SilverStripe\Forms\FormRequestHandler:
   extensions:
     - SilverStripe\CMSEvents\Listener\Form\Listener
 

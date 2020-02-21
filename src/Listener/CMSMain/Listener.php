@@ -40,6 +40,7 @@ class Listener extends Extension
                     'result' => $result,
                     'treeClass' => $this->owner->config()->get('tree_class'),
                     'id' => $request->requestVar('ID'),
+                    'request' => $request,
                 ]
             )
         );
