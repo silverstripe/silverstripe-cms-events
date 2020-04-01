@@ -9,9 +9,8 @@
     ],
     "license": "BSD-3-Clause",
     "require": {
-        "silverstripe/cms": "^4.5",
         "silverstripe/framework": "^4.5.1",
-        "silverstripe/event-dispatcher": "*"
+        "silverstripe/event-dispatcher": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
