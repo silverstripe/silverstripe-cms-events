@@ -6,6 +6,10 @@ namespace SilverStripe\CMSEvents\Tests\Listener\CMSMain;
 
 use SilverStripe\CMS\Controllers\CMSMain;
 
+if (!class_exists(CMSMain::class)) {
+    return;
+}
+
 class CMSMainFake extends CMSMain
 {
     private static $allowed_actions = [
