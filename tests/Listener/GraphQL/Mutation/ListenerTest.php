@@ -12,7 +12,7 @@ use SilverStripe\CMSEvents\Listener\GraphQL\Mutation\Listener;
 use SilverStripe\GraphQL\Scaffolding\Scaffolders\CRUD\Create;
 use SilverStripe\GraphQL\Scaffolding\Scaffolders\CRUD\Delete;
 use SilverStripe\GraphQL\Scaffolding\Scaffolders\CRUD\Update;
-use SilverStripe\GraphQL\Tests\Fake\DataObjectFake;
+use SilverStripe\CMSEvents\Tests\Fake\DataObjectFake;
 use SilverStripe\Security\Member;
 
 class ListenerTest extends SapphireTest

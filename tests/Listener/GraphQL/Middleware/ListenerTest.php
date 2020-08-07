@@ -8,7 +8,7 @@ use SilverStripe\EventDispatcher\Dispatch\Dispatcher;
 use SilverStripe\EventDispatcher\Dispatch\EventDispatcherInterface;
 use SilverStripe\EventDispatcher\Event\EventContextInterface;
 use SilverStripe\GraphQL\Manager;
-use SilverStripe\GraphQL\Tests\Fake\DataObjectFake;
+use SilverStripe\CMSEvents\Tests\Fake\DataObjectFake;
 
 class ListenerTest extends SapphireTest
 {
