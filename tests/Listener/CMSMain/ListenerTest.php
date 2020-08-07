@@ -13,6 +13,9 @@ use SilverStripe\EventDispatcher\Event\EventContextInterface;
 
 class ListenerTest extends SapphireTest
 {
+
+    protected $usesDatabase = true;
+
     public function testListener()
     {
         $dispatcherMock = $this->getMockBuilder(Dispatcher::class)
