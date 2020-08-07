@@ -36,7 +36,7 @@ class DataObjectFake extends DataObject implements TestOnly
         'MyInt',
     ];
 
-    private static $default_sort = '"GraphQL_DataObjectFake"."MyField" ASC';
+    private static $default_sort = '"CMSEvents_DataObjectFake"."MyField" ASC';
 
     public $customSetterFieldResult;
 
