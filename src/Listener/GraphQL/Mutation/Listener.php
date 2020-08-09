@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
 
 namespace SilverStripe\CMSEvents\Listener\GraphQL\Mutation;
 
@@ -26,10 +26,10 @@ if (!class_exists(MutationScaffolder::class)) {
  */
 class Listener extends Extension
 {
-    const EVENT_NAME = 'graphqlMutation';
-    const TYPE_CREATE = 'create';
-    const TYPE_DELETE = 'delete';
-    const TYPE_UPDATE = 'update';
+    public const EVENT_NAME = 'graphqlMutation';
+    public const TYPE_CREATE = 'create';
+    public const TYPE_DELETE = 'delete';
+    public const TYPE_UPDATE = 'update';
 
     /**
      * Extension point in @see Create::resolve

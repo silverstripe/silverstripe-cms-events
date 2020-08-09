@@ -1,8 +1,6 @@
 <?php
 
-
 namespace SilverStripe\CMSEvents\Tests\Listener\GridField\Action;
-
 
 use SilverStripe\Forms\GridField\GridField_URLHandler;
 

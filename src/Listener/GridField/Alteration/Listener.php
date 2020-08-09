@@ -19,7 +19,7 @@ use SilverStripe\Forms\GridField\GridField;
  */
 class Listener extends Extension
 {
-    const EVENT_NAME = 'gridFieldAlteration';
+    public const EVENT_NAME = 'gridFieldAlteration';
 
     /**
      * Extension point in @see GridField::handleAction

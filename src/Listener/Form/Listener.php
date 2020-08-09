@@ -18,7 +18,7 @@ use SilverStripe\Forms\FormRequestHandler;
  */
 class Listener extends Extension
 {
-    const EVENT_NAME = 'formSubmitted';
+    public const EVENT_NAME = 'formSubmitted';
 
     /**
      * Extension point in @see FormRequestHandler::httpSubmission

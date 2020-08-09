@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
 
 namespace SilverStripe\CMSEvents\Listener\GraphQL\Middleware;
 
@@ -25,7 +25,7 @@ if (!class_exists(Manager::class)) {
  */
 class Listener extends Extension
 {
-    const EVENT_NAME = 'graphqlOperation';
+    public const EVENT_NAME = 'graphqlOperation';
 
     /**
      * Extension point in @see Manager::callMiddleware
