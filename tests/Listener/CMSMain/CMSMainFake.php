@@ -1,8 +1,6 @@
 <?php
 
-
 namespace SilverStripe\CMSEvents\Tests\Listener\CMSMain;
-
 
 use SilverStripe\CMS\Controllers\CMSMain;
 

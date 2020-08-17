@@ -1,8 +1,6 @@
 <?php
 
-
 namespace SilverStripe\CMSEvents\Tests\Listener\GridField\Alteration;
-
 
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;

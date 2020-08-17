@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
 
 namespace SilverStripe\CMSEvents\Listener\CMSMain;
 
@@ -21,7 +21,7 @@ if (!class_exists(CMSMain::class)) {
  */
 class Listener extends Extension
 {
-    const EVENT_NAME = 'cmsAction';
+    public const EVENT_NAME = 'cmsAction';
 
     /**
      * Extension point in @see CMSMain::handleAction
