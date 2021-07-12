@@ -32,12 +32,12 @@ class Listener extends Extension
      * Graph QL custom action
      *
      * @param Schema $schema
-     * @param string $query
+     * @param string|null $query
      * @param array $context
      * @param array|null $params
      * @throws SyntaxError
      */
-    public function onAfterCallMiddleware(Schema $schema, string $query, array $context, $params): void
+    public function onAfterCallMiddleware(Schema $schema, ?string $query, array $context, $params): void
     {
         Dispatcher::singleton()->trigger(
             self::EVENT_NAME,
