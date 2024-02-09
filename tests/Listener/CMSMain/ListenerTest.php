@@ -18,6 +18,7 @@ class ListenerTest extends SapphireTest
 
     public function testListener()
     {
+        $this->markTestSkipped('This test is for GraphQL 3 which is now legacy');
         $dispatcherMock = $this->getMockBuilder(Dispatcher::class)
             ->setConstructorArgs([
                 $this->createMock(EventDispatcherInterface::class)

@@ -14,6 +14,7 @@ class ListenerTest extends SapphireTest
 {
     public function testListener()
     {
+        $this->markTestSkipped('This test is for GraphQL 3 which is now legacy');
         $manager = Manager::create();
         $manager->applyConfig([
             'scaffolding' => [
