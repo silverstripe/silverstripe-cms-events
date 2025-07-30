@@ -8,32 +8,22 @@ This module allows developers to register event handlers for common CMS actions 
 #### formSubmitted
 * **Description**: Any form submitted in the CMS
 * **Example**:  save, publish, unpublish, delete
-* **Listener**: `SilverStripe\CMSEvents\Listener\Form\Listener`
+* **Listener**: `SilverStripe\CMSEvents\Listener\Form\FormListenerExtension`
 
 #### cmsAction
 * **Description**: A `CMSMain` controller action
 * **Example**:  `savetreenode` (reorder site tree)
-* **Listener**: `SilverStripe\CMSEvents\Listener\CMSMain\Listener`
+* **Listener**: `SilverStripe\CMSEvents\Listener\CMSMain\CmsMainListenerExtension`
 
 #### gridFieldAction
 * **Description**: A standard GridField action invoked via a URL (`GridField_URLHandler`)
 * **Example**:  `handleReorder` (reorder items)
-* **Listener**: `SilverStripe\CMSEvents\Listener\GridField\Action\Listener`
+* **Listener**: `SilverStripe\CMSEvents\Listener\GridField\Action\GridFieldActionListenerExtension`
 
 #### gridFieldAlteration
 * **Description**: A GridField action invoked via a URL (`GridField_ActionProvider`)
 * **Example**:  `deleterecord`, `archiverecord`
-* **Listener**: `SilverStripe\CMSEvents\Listener\GridField\Alteration\Listener`
-
-#### graphqlMutation
-* **Description**: A scaffolded GraphQL mutation
-* **Example**:  `mutation createMyDataObject(Input: $Input)`
-* **Listener**: `SilverStripe\CMSEvents\Listener\GraphQL\Mutation\Listener`
-
-#### graphqlOperation
-* **Description**: Any generic GraphQL operation
-* **Example**:  `mutation publishAllFiles`, `query allTheThings`
-* **Listener**: `SilverStripe\CMSEvents\Listener\GraphQL\Middleware\Listener`
+* **Listener**: `SilverStripe\CMSEvents\Listener\GridField\Alteration\GridFieldAlterationListenerExtension`
 
 
 ## Registering an event handler
@@ -56,7 +46,7 @@ https://github.com/silverstripe/silverstripe-event-dispatcher
 
 ## Requirements
 
-* silverstripe/framework: ^4.5
+* silverstripe/framework: ^6
 
 ## Installation
 
