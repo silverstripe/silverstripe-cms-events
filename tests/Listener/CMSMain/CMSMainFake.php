@@ -10,16 +10,16 @@ if (!class_exists(CMSMain::class)) {
 
 class CMSMainFake extends CMSMain
 {
-    private static $allowed_actions = [
+    private static array $allowed_actions = [
         'myaction',
     ];
 
-    public function myaction()
+    public function myaction(): string
     {
         return 'this is my action';
     }
 
-    public function myFormAction($data, $form)
+    public function myFormAction(mixed $data, mixed $form): string
     {
         return 'submitted';
     }

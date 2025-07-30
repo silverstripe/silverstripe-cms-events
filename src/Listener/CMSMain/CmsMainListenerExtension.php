@@ -1,4 +1,4 @@
-<?php // phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
+<?php
 
 namespace SilverStripe\CMSEvents\Listener\CMSMain;
 
@@ -13,15 +13,13 @@ if (!class_exists(CMSMain::class)) {
 }
 
 /**
- * Class CMSMainAction
- *
  * Snapshot action listener for CMS main actions
  *
- * @property CMSMain|$this $owner
+ * @extends Extension<CMSMain>
  */
-class Listener extends Extension
+class CmsMainListenerExtension extends Extension
 {
-    public const EVENT_NAME = 'cmsAction';
+    public const string EVENT_NAME = 'cmsAction';
 
     /**
      * Extension point in @see CMSMain::handleAction
@@ -30,15 +28,17 @@ class Listener extends Extension
      * @param $action
      * @param $result
      */
-    public function afterCallActionHandler(HTTPRequest $request, $action, $result): void
+    protected function afterCallActionHandler(HTTPRequest $request, $action, $result): void
     {
+        $owner = $this->getOwner();
+
         Dispatcher::singleton()->trigger(
-            self::EVENT_NAME,
+            CmsMainListenerExtension::EVENT_NAME,
             Event::create(
                 $action,
                 [
                     'result' => $result,
-                    'treeClass' => $this->owner->config()->get('tree_class'),
+                    'treeClass' => $owner->config()->get('tree_class'),
                     'id' => $request->requestVar('ID'),
                     'request' => $request,
                 ]

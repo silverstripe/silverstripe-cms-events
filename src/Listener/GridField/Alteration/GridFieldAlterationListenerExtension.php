@@ -11,15 +11,13 @@ use SilverStripe\Forms\GridField\FormAction\StateStore;
 use SilverStripe\Forms\GridField\GridField;
 
 /**
- * Class AlterAction
- *
  * Snapshot action listener for grid field actions
  *
- * @property GridField|$this $owner
+ * @extends Extension<GridField>
  */
-class Listener extends Extension
+class GridFieldAlterationListenerExtension extends Extension
 {
-    public const EVENT_NAME = 'gridFieldAlteration';
+    public const string EVENT_NAME = 'gridFieldAlteration';
 
     /**
      * Extension point in @see GridField::handleAction
@@ -30,28 +28,33 @@ class Listener extends Extension
      * @param $action
      * @param $result
      */
-    public function afterCallActionHandler(HTTPRequest $request, $action, $result): void
+    protected function afterCallActionHandler(HTTPRequest $request, $action, $result): void
     {
         if (!in_array($action, ['index', 'gridFieldAlterAction'])) {
             return;
         }
+
+        $owner = $this->getOwner();
         $actionName = null;
         $arguments = [];
-        $actionData = $this->getActionData($request->requestVars(), $this->owner);
+        $actionData = $this->getActionData($request->requestVars(), $owner);
+
         if ($actionData) {
             list ($actionName, $arguments) = $actionData;
         }
+
         if (!$actionName === null) {
             return;
         }
+
         Dispatcher::singleton()->trigger(
-            self::EVENT_NAME,
+            GridFieldAlterationListenerExtension::EVENT_NAME,
             Event::create(
                 $actionName,
                 [
                     'request' => $request,
                     'result' => $result,
-                    'gridField' => $this->owner,
+                    'gridField' => $owner,
                     'args' => $arguments,
                 ]
             )

@@ -7,15 +7,19 @@ use SilverStripe\Forms\GridField\GridField_ActionProvider;
 
 class ActionProviderFake implements GridField_ActionProvider
 {
-    public function getActions($gridField)
+    public function getActions($gridField): array
     {
-        return ['myaction'];
+        return [
+            'myaction',
+        ];
     }
 
-    public function handleAction(GridField $gridField, $actionName, $arguments, $data)
+    public function handleAction(GridField $gridField, $actionName, $arguments, $data): mixed
     {
-        if ($actionName === 'myaction') {
-            return 'my action success';
+        if ($actionName !== 'myaction') {
+            return null;
         }
+
+        return 'my action success';
     }
 }

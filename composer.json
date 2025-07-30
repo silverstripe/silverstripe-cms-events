@@ -9,11 +9,16 @@
     ],
     "license": "BSD-3-Clause",
     "require": {
-        "silverstripe/framework": "^5",
-        "silverstripe/event-dispatcher": "^1"
+        "php": "^8.3",
+        "silverstripe/framework": "^6",
+        "silverstripe/event-dispatcher": "^2"
     },
     "require-dev": {
-        "silverstripe/recipe-testing": "^3"
+        "silverstripe/documentation-lint": "^1",
+        "silverstripe/recipe-testing": "^4",
+        "silverstripe/frameworktest": "^2",
+        "silverstripe/standards": "^1",
+        "phpstan/extension-installer": "^1.3"
     },
     "autoload": {
         "psr-4": {
@@ -24,16 +29,19 @@
     "extra": {
         "branch-alias": {
             "dev-1": "1.x-dev",
-            "dev-master": "2.x-dev"
+            "dev-2": "2.x-dev",
+            "dev-master": "3.x-dev"
         }
     },
     "scripts": {
         "lint": "vendor/bin/phpcs src/ tests/",
         "lint-clean": "vendor/bin/phpcbf src/ tests/"
     },
-    "conflict": {
-        "silverstripe/graphql": "< 3.2.1"
-    },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
 }

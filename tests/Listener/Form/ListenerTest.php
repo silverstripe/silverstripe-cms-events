@@ -2,8 +2,10 @@
 
 namespace SilverStripe\CMSEvents\Tests\Listener\Form;
 
+use PHPUnit\Framework\MockObject\Exception;
 use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\EventDispatcher\Dispatch\Dispatcher;
@@ -16,6 +18,11 @@ use SilverStripe\Forms\FormAction;
 
 class ListenerTest extends SapphireTest
 {
+    /**
+     * @return void
+     * @throws Exception
+     * @throws HTTPResponse_Exception
+     */
     public function testListener()
     {
         $form = Form::create(
@@ -37,7 +44,9 @@ class ListenerTest extends SapphireTest
             ->setConstructorArgs([
                 $this->createMock(EventDispatcherInterface::class)
             ])
-            ->setMethods(['trigger'])
+            ->onlyMethods([
+                'trigger',
+            ])
             ->getMock();
         $dispatcherMock->expects($this->once())
             ->method('trigger')

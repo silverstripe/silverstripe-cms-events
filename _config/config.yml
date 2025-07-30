@@ -3,8 +3,8 @@ Name: event-dispatcher-listeners-core
 ---
 SilverStripe\Forms\GridField\GridField:
   extensions:
-    - SilverStripe\CMSEvents\Listener\GridField\Alteration\Listener
-    - SilverStripe\CMSEvents\Listener\GridField\Action\Listener
+    - SilverStripe\CMSEvents\Listener\GridField\Alteration\GridFieldAlterationListenerExtension
+    - SilverStripe\CMSEvents\Listener\GridField\Action\GridFieldActionListenerExtension
 
 ---
 Name: event-dispatcher-listeners-form
@@ -13,7 +13,7 @@ Only:
 ---
 SilverStripe\Forms\FormRequestHandler:
   extensions:
-    - SilverStripe\CMSEvents\Listener\Form\Listener
+    - SilverStripe\CMSEvents\Listener\Form\FormListenerExtension
 
 
 ---
@@ -23,25 +23,5 @@ Only:
 ---
 SilverStripe\CMS\Controllers\CMSMain:
   extensions:
-    - SilverStripe\CMSEvents\Listener\CMSMain\Listener
+    - SilverStripe\CMSEvents\Listener\CMSMain\CmsMainListenerExtension
 
----
-Name: event-dispatcher-listeners-graphql
-Only:
-  moduleexists: silverstripe/graphql
----
-SilverStripe\GraphQL\Scaffolding\Scaffolders\CRUD\Create:
-  extensions:
-    - SilverStripe\CMSEvents\Listener\GraphQL\Mutation\Listener
-
-SilverStripe\GraphQL\Scaffolding\Scaffolders\CRUD\Delete:
-  extensions:
-    - SilverStripe\CMSEvents\Listener\GraphQL\Mutation\Listener
-
-SilverStripe\GraphQL\Scaffolding\Scaffolders\CRUD\Update:
-  extensions:
-    - SilverStripe\CMSEvents\Listener\GraphQL\Mutation\Listener
-
-SilverStripe\GraphQL\Manager:
-  extensions:
-    - SilverStripe\CMSEvents\Listener\GraphQL\Middleware\Listener

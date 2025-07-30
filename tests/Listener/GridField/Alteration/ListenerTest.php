@@ -2,22 +2,29 @@
 
 namespace SilverStripe\CMSEvents\Tests\Listener\GridField\Alteration;
 
+use PHPUnit\Framework\MockObject\Exception;
+use SilverStripe\CMSEvents\Tests\Listener\CMSMain\CMSMainFake;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\EventDispatcher\Dispatch\Dispatcher;
 use SilverStripe\EventDispatcher\Dispatch\EventDispatcherInterface;
 use SilverStripe\EventDispatcher\Event\EventContextInterface;
-use SilverStripe\CMSEvents\Tests\Listener\CMSMain\CMSMainFake;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridField_FormAction;
 use SilverStripe\Forms\GridField\GridFieldConfig;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Model\List\ArrayList;
 
 class ListenerTest extends SapphireTest
 {
+    /**
+     * @return void
+     * @throws Exception
+     * @throws HTTPResponse_Exception
+     */
     public function testListener()
     {
         $grid = GridField::create(
@@ -60,7 +67,9 @@ class ListenerTest extends SapphireTest
             ->setConstructorArgs([
                 $this->createMock(EventDispatcherInterface::class)
             ])
-            ->setMethods(['trigger'])
+            ->onlyMethods([
+                'trigger',
+            ])
             ->getMock();
         $dispatcherMock->expects($this->once())
             ->method('trigger')
