@@ -10,15 +10,13 @@ use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormRequestHandler;
 
 /**
- * Class Submission
- *
  * Snapshot action listener for form submissions
  *
- * @property FormRequestHandler|$this $owner
+ * @extends Extension<FormRequestHandler>
  */
-class Listener extends Extension
+class FormListenerExtension extends Extension
 {
-    public const EVENT_NAME = 'formSubmitted';
+    public const string EVENT_NAME = 'formSubmitted';
 
     /**
      * Extension point in @see FormRequestHandler::httpSubmission
@@ -27,12 +25,12 @@ class Listener extends Extension
      * @param HTTPRequest $request
      * @param $funcName
      * @param $vars
-     * @param Form $form
+     * @param Form|null $form
      */
-    public function afterCallFormHandler(HTTPRequest $request, $funcName, $vars, $form): void
+    protected function afterCallFormHandler(HTTPRequest $request, $funcName, $vars, ?Form $form): void
     {
         Dispatcher::singleton()->trigger(
-            self::EVENT_NAME,
+            FormListenerExtension::EVENT_NAME,
             Event::create(
                 $funcName,
                 [

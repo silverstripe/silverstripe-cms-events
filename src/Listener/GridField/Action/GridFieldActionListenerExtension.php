@@ -9,15 +9,13 @@ use SilverStripe\EventDispatcher\Symfony\Event;
 use SilverStripe\Forms\GridField\GridField;
 
 /**
- * Class UrlHandlerAction
- *
  * Snapshot action listener for grid field actions
  *
- * @property GridField|$this $owner
+ * @extends Extension<GridField>
  */
-class Listener extends Extension
+class GridFieldActionListenerExtension extends Extension
 {
-    public const EVENT_NAME = 'gridFieldAction';
+    public const string EVENT_NAME = 'gridFieldAction';
 
     /**
      * Extension point in @see GridField::handleRequest
@@ -28,16 +26,18 @@ class Listener extends Extension
      * @param $action
      * @param $result
      */
-    public function afterCallActionURLHandler(HTTPRequest $request, $action, $result): void
+    protected function afterCallActionURLHandler(HTTPRequest $request, $action, $result): void
     {
+        $owner = $this->getOwner();
+
         Dispatcher::singleton()->trigger(
-            self::EVENT_NAME,
+            GridFieldActionListenerExtension::EVENT_NAME,
             Event::create(
                 $action,
                 [
                     'request' => $request,
                     'result' => $result,
-                    'gridField' => $this->owner
+                    'gridField' => $owner
                 ]
             )
         );

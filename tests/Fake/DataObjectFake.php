@@ -12,72 +12,72 @@ use SilverStripe\Security\Member;
  * @property string $MyField
  * @property int $MyInt
  * @method Member Author()
- * @method ManyManyList Files()
+ * @method ManyManyList<File> Files()
  */
 class DataObjectFake extends DataObject implements TestOnly
 {
-    private static $table_name = 'CMSEvents_DataObjectFake';
+    private static string $table_name = 'CMSEvents_DataObjectFake';
 
-    private static $db = [
+    private static array $db = [
         'MyField' => 'Varchar',
         'MyInt' => 'Int'
     ];
 
-    private static $has_one = [
+    private static array $has_one = [
         'Author' => Member::class
     ];
 
-    private static $many_many = [
+    private static array $many_many = [
         'Files' => File::class
     ];
 
-    private static $searchable_fields = [
+    private static array $searchable_fields = [
         'MyField',
         'MyInt',
     ];
 
-    private static $default_sort = '"CMSEvents_DataObjectFake"."MyField" ASC';
+    private static string $default_sort = '"CMSEvents_DataObjectFake"."MyField" ASC';
 
-    public $customSetterFieldResult;
+    public mixed $customSetterFieldResult;
 
-    public $customSetterMethodResult;
+    public mixed $customSetterMethodResult;
 
-    public function getCustomGetter()
+    public function getCustomGetter(): string
     {
         return 'customGetterValue';
     }
 
-    public function customMethod()
+    public function customMethod(): string
     {
         return 'customMethodValue';
     }
 
-    public function setCustomSetterField($val)
+    public function setCustomSetterField($val): void
     {
         $this->customSetterFieldResult = $val;
     }
 
-    public function customSetterMethod($val)
+    public function customSetterMethod($val): void
     {
         $this->customSetterMethodResult = $val;
     }
 
-    public function canCreate($member = null, $context = [])
+    public function canCreate($member = null, $context = []): mixed
     {
         return true;
     }
 
-    public function canEdit($member = null)
+    public function canEdit($member = null): mixed
     {
         return true;
     }
 
-    public function canView($member = null)
+    public function canView($member = null): mixed
     {
         return true;
     }
 
-    public function canDelete($member = null)
+    public function canDelete($member = null): mixed
     {
         return true;
     }
